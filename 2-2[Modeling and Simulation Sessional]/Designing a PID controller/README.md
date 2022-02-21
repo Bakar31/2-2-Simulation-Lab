@@ -1,4 +1,4 @@
 ## Designing a PID controller for a given system.
 
 ### Output
-![alt text](https://github.com/Bakar31/MTE-2206-MATLAB/blob/master/Designing%20a%20PID%20controller/PID%20output.png)
+![alt text](https://github.com/Bakar31/RUET-Sessional-Codes/blob/master/2-2%5BModeling%20and%20Simulation%20Sessional%5D/Designing%20a%20PID%20controller/PID%20output.png)
