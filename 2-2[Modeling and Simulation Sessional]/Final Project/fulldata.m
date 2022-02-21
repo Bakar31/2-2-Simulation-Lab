@@ -28,7 +28,3 @@ title('Noisy Signal')
 subplot(3, 1, 3)
 plot(x, y_filter,'green')
 title('Signal after removing noise with Lowpass filter')
-
-
-
-
