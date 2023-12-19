@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Embedded System Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            margin-bottom: 10px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            max-width: 800px;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        h2 {
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .webcam-container {
+            border: 2px solid #333;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 3px;
+            width: 700px;
+            height: 380px;
+        }
+
+        #webcam {
+            display: block;
+            width: 90%;
+            height: auto;
+        }
+
+        .text-output-container {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: left;
+        }
+
+        #text-output {
+            font-size: 16px;
+            min-height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Intruder Monitoring</h1>
+        <div class="webcam-container">
+            <img id="webcam" src="{{ url_for('video_feed') }}" alt="Webcam Feed" width="640" height="480" autoplay />
+        </div>
+    </div>
+    <div class="container">
+        <h2>Real-time Text Output:</h2>
+        <div class="text-output-container">
+            <div id="text-output"></div>
+            <!-- This will display the real-time text output -->
+        </div>
+
+        <!-- Your other HTML content -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+        <script type="text/javascript">
+            var socket = io.connect(
+                "http://" + document.domain + ":" + location.port
+            );
+
+            socket.on("text_output", function (data) {
+                document.getElementById("text-output").innerHTML = data.text; // Update text output in the UI
+            });
+        </script>
+    </div>
+</body>
+
+</html>
